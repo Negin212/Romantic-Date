@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>قرار ما 💜</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="confetti-container" id="confettiContainer"></div>
+
+  <!-- ===== Notification Container ===== -->
+  <div class="notification-container" id="notificationContainer"></div>
+
+  <div class="main-container">
+
+    <!-- ===== STEP 1 ===== -->
+    <div class="step active" id="step1">
+      <div class="glass-card">
+        <h1 class="title-main">
+          با من میای سر قرار؟
+          <span class="emoji-heart">💜</span>
+        </h1>
+        <p class="subtitle-text">یه سوال مهم دارم... خوب فکر کن!</p>
+        <div class="btn-row" id="btnRow1">
+          <button class="btn btn-yes" id="btnYes1" onclick="goToStep2()">آره حتماً 😍</button>
+          <button class="btn btn-no" id="btnNo1" onclick="handleNoClick()">نه 🥺</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== STEP 2: مکان ===== -->
+    <div class="step" id="step2">
+      <div class="glass-card">
+        <h2 class="title-main" style="font-size: clamp(1.4rem, 3.5vw, 2rem);">خب، کجا بریم؟</h2>
+        <p class="subtitle-text">یه جای خوب انتخاب کن!</p>
+        <div class="option-grid" id="locationGrid">
+          <button class="btn-option" data-location="جنگل" onclick="handleLocation(this)">
+            <span class="original-text">جنگل 🌲</span>
+            <span class="lock-text">جنگل 🌲</span>
+            <span class="lock-overlay">قفل شد 🔒</span>
+          </button>
+          <button class="btn-option" data-location="دریا" onclick="handleLocation(this)">
+            <span class="original-text">دریا 🌊</span>
+            <span class="lock-text">دریا 🌊</span>
+            <span class="lock-overlay">قفل شد 🔒</span>
+          </button>
+          <button class="btn-option" data-location="کافه" onclick="handleLocation(this)">
+            <span class="original-text">کافه ☕️</span>
+            <span class="lock-text">کافه ☕️</span>
+            <span class="lock-overlay">قفل شد 🔒</span>
+          </button>
+          <button class="btn-option" data-location="سینما" onclick="handleLocation(this)">
+            <span class="original-text">سینما 📽️</span>
+            <span class="lock-text">سینما 📽️</span>
+            <span class="lock-overlay">قفل شد 🔒</span>
+          </button>
+          <button class="btn-option" data-location="رستوران" onclick="handleLocation(this)">
+            <span class="original-text">رستوران 🍛</span>
+            <span class="lock-text">رستوران 🍛</span>
+            <span class="lock-overlay">قفل شد 🔒</span>
+          </button>
+          <button class="btn-option" data-location="شهربازی" onclick="handleLocation(this)">
+            <span class="original-text">شهربازی 🎡</span>
+            <span class="lock-text">شهربازی 🎡 </span>
+            <span class="lock-overlay">قفل شد 🔒</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== STEP 3: زمان ===== -->
+    <div class="step" id="step3">
+      <div class="glass-card">
+        <h2 class="title-main" style="font-size: clamp(1.4rem, 3.5vw, 2rem);">کی بریم؟</h2>
+        <p class="subtitle-text">زمان مناسب رو انتخاب کن</p>
+        <div class="option-grid option-grid-2" id="timeGrid">
+          <button class="btn-option" data-time="امروز" onclick="handleTime(this)">
+            <span class="original-text">امروز ساعت ۱۷ 🌅</span>
+            <span class="lock-text">فردا ساعت ۱۷ 🌅</span>
+            <span class="lock-overlay">قفل شد 🔒</span>
+          </button>
+          <button class="btn-option" data-time="فردا" onclick="handleTime(this)">
+            <span class="original-text">فردا ساعت ۲۰ 🌙</span>
+            <span class="lock-text">فردا ساعت ۲۰ 🌙</span>
+            <span class="lock-overlay">قفل شد 🔒</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== STEP 4: رنگ ===== -->
+    <div class="step" id="step4">
+      <div class="glass-card">
+        <h2 class="title-main" style="font-size: clamp(1.4rem, 3.5vw, 2rem);">چه رنگی میپوشی؟</h2>
+        <p class="subtitle-text">یه انتخاب شیک داشته باش!</p>
+        <div class="option-grid option-grid-4" id="colorGrid">
+          <button class="btn-option" data-color="کرم" onclick="handleColor(this)">
+            <span class="original-text">کرم 🤍</span>
+            <span class="lock-text">کرم 🤍</span>
+            <span class="lock-overlay">قفل شد 🔒</span>
+          </button>
+          <button class="btn-option" data-color="قهوه‌ای" onclick="handleColor(this)">
+            <span class="original-text">قهوه‌ای 🤎</span>
+            <span class="lock-text">قهوه‌ای 🤎</span>
+            <span class="lock-overlay">قفل شد 🔒</span>
+          </button>
+          <button class="btn-option" data-color="آبی" onclick="handleColor(this)">
+            <span class="original-text">آبی 💙</span>
+            <span class="lock-text">آبی 💙</span>
+            <span class="lock-overlay">قفل شد 🔒</span>
+          </button>
+          <button class="btn-option" data-color="مشکی" onclick="handleColor(this)">
+            <span class="original-text">مشکی 🖤</span>
+            <span class="lock-text">مشکی 🖤</span>
+            <span class="lock-overlay">قفل شد 🔒</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== STEP 5: غذا ===== -->
+    <div class="step" id="step5">
+      <div class="glass-card">
+        <h2 class="title-main" style="font-size: clamp(1.4rem, 3.5vw, 2rem);">چی میخوای بخوریم؟</h2>
+        <p class="subtitle-text">سلیقه‌ات رو نشون بده!</p>
+        <div class="option-grid option-grid-6" id="foodGrid">
+          <button class="btn-option" data-food="ذرت مکزیکی" onclick="handleFood(this)">
+            <span class="original-text">ذرت مکزیکی 🌽</span>
+            <span class="lock-text">ذرت مکزیکی 🌽</span>
+            <span class="lock-overlay">قفل شد 🔒</span>
+          </button>
+          <button class="btn-option" data-food="اسکمو" onclick="handleFood(this)">
+            <span class="original-text">اسکمو 🍧</span>
+            <span class="lock-text">اسکمو 🍧</span>
+            <span class="lock-overlay">قفل شد 🔒</span>
+          </button>
+          <button class="btn-option" data-food="بستنی" onclick="handleFood(this)">
+            <span class="original-text">بستنی 🍦</span>
+            <span class="lock-text">بستنی 🍦</span>
+            <span class="lock-overlay">قفل شد 🔒</span>
+          </button>
+          <button class="btn-option" data-food="لواشک" onclick="handleFood(this)">
+            <span class="original-text">لواشک 🍬</span>
+            <span class="lock-text">لواشک 🍬</span>
+            <span class="lock-overlay">قفل شد 🔒</span>
+          </button>
+          <button class="btn-option" data-food="کیک" onclick="handleFood(this)">
+            <span class="original-text">کیک 🍰</span>
+            <span class="lock-text">کیک 🍰</span>
+            <span class="lock-overlay">قفل شد 🔒</span>
+          </button>
+          <button class="btn-option" data-food="خوراکی" onclick="handleFood(this)">
+            <span class="original-text">خوراکی 🍱</span>
+            <span class="lock-text">خوراکی 🍱</span>
+            <span class="lock-overlay">قفل شد 🔒</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== STEP 6: وسیله ===== -->
+    <div class="step" id="step6">
+      <div class="glass-card">
+        <h2 class="title-main" style="font-size: clamp(1.4rem, 3.5vw, 2rem);">با چی قراره بریم؟</h2>
+        <p class="subtitle-text">تو این هوای گرم ماشین کولر داره خوبه. 😎</p>
+        <div class="option-grid option-grid-2" id="vehicleGrid">
+          <button class="btn-option" data-vehicle="ماشین تو" onclick="handleVehicle(this)">
+            <span class="original-text">با ماشین تو بریم 🚗</span>
+            <span class="lock-text">با ماشین تو بریم 🚗</span>
+            <span class="lock-overlay">قفل شد 🔒</span>
+          </button>
+          <button class="btn-option" data-vehicle="موتور من" onclick="handleVehicle(this)">
+            <span class="original-text">با موتور من بریم 🏍️</span>
+            <span class="lock-text">با موتور من بریم 🏍️</span>
+            <span class="lock-overlay">قفل شد 🔒</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== STEP 7: نهایی ===== -->
+    <div class="step" id="step7">
+      <div class="glass-card">
+        <div class="final-icon">💜</div>
+        <div class="final-message">
+          عالیه پس قرارمون <span id="finalDate" class="highlight"></span> شد.😍<br>
+          لباس کرم رنگت رو بپوش و با ماشینت بیا دنبالم.🚘<br>
+          یه سوپرایز برات دارم.🎁
+        </div>
+        <div class="final-sub">بی‌صبرانه منتظر قرامون هستم....</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
